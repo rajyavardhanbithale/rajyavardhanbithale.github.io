@@ -1,0 +1,43 @@
+body {
+    animation: load 1s;
+}
+
+
+.skillsicon {
+    font-size: 150%;
+}
+
+@keyframes load {
+    from {
+        opacity: 0;
+        /*transform: rotateX(-10deg);*/
+        transform: translateX(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.reveal {
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 1s all ease;
+}
+
+.reveal.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.imgskill{
+    object-position: 0% 9%;
+}
+
+.skillsiconsocial{
+    color:  rgb(59 130 246);
+    font-size: 150%;
+    margin-left: 20%;
+}

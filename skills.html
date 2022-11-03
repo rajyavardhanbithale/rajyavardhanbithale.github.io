@@ -1,0 +1,377 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/index.js"></script>
+    <script src="https://kit.fontawesome.com/a07ca67f91.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<style>
+    /*{
+        background: #111828;
+    }*/
+
+
+    .headsign {
+        font-family: 'Fuzzy Bubbles', cursive;
+        font-size: 180%;
+    }
+
+    .iconcntr {
+        position: relative;
+        top: 1px;
+        font-size: 120%;
+    }
+
+    .hover-underline-animation {
+        display: inline-block;
+        position: relative;
+
+    }
+
+    .hover-underline-animation:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #0087ca;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+
+    .hover-underline-animation:hover:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
+    .delay {
+        background-color: #0087ca;
+    }
+
+    .rec {
+        background-color: blueviolet;
+        height: 102px;
+        width: 159px;
+        z-index: 1;
+        position: absolute;
+        margin-left: 80%;
+    }
+</style>
+
+<body>
+
+
+    <header class="bg-dark dark:bg-gray-900">
+        <nav class="bg-white dark:bg-gray-900">
+            <div class="container p-6 mx-auto">
+                <a class="block text-2xl font-bold text-center text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300 headsign"
+                    href="#">Rajyavardhan</a>
+
+                <div class="flex items-center justify-center mt-6 text-gray-600 capitalize dark:text-gray-300">
+                    <a href="./index.html"
+                        class="text-gray-800 dark:text-gray-200 hover-underline-animation mx-1.5 sm:mx-6">home</a>
+
+                    <a href="./skills.html"
+                        class="border-b-2 border-transparent hover:text-gray-800 border-blue-500 dark:hover:text-gray-200  mx-1.5 sm:mx-6 hover-underline-animation">Skills</a>
+
+                    <a href="#"
+                        class="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover-underline-animation mx-1.5 sm:mx-6">pricing</a>
+
+                    <a href="#"
+                        class="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover-underline-animation mx-1.5 sm:mx-6">blog</a>
+
+                    <a href="#"
+                        class="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover-underline-animation mx-1.5 sm:mx-6">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M1 11.9554V12.0446C1.01066 14.7301 1.98363 17.1885 3.59196 19.0931C4.05715 19.6439 4.57549 20.1485 5.13908 20.5987C5.70631 21.0519 6.31937 21.4501 6.97019 21.7853C7.90271 22.2656 8.91275 22.6165 9.97659 22.8143C10.5914 22.9286 11.2243 22.9918 11.8705 22.9993C11.9136 22.9998 11.9567 23 11.9999 23C15.6894 23 18.9547 21.1836 20.9502 18.3962C21.3681 17.8125 21.7303 17.1861 22.0291 16.525C22.6528 15.1448 22.9999 13.613 22.9999 12C22.9999 8.73978 21.5816 5.81084 19.3283 3.79653C18.8064 3.32998 18.2397 2.91249 17.6355 2.55132C15.9873 1.56615 14.0597 1 11.9999 1C11.888 1 11.7764 1.00167 11.6653 1.00499C9.99846 1.05479 8.42477 1.47541 7.0239 2.18719C6.07085 2.67144 5.19779 3.29045 4.42982 4.01914C3.7166 4.69587 3.09401 5.4672 2.58216 6.31302C2.22108 6.90969 1.91511 7.54343 1.6713 8.20718C1.24184 9.37631 1.00523 10.6386 1 11.9554ZM20.4812 15.0186C20.8171 14.075 20.9999 13.0588 20.9999 12C20.9999 9.54265 20.0151 7.31533 18.4186 5.6912C17.5975 7.05399 16.5148 8.18424 15.2668 9.0469C15.7351 10.2626 15.9886 11.5603 16.0045 12.8778C16.7692 13.0484 17.5274 13.304 18.2669 13.6488C19.0741 14.0252 19.8141 14.487 20.4812 15.0186ZM15.8413 14.8954C16.3752 15.0321 16.904 15.22 17.4217 15.4614C18.222 15.8346 18.9417 16.3105 19.5723 16.8661C18.0688 19.2008 15.5151 20.7953 12.5788 20.9817C13.5517 20.0585 14.3709 18.9405 14.972 17.6514C15.3909 16.7531 15.678 15.8272 15.8413 14.8954ZM13.9964 12.6219C13.9583 11.7382 13.7898 10.8684 13.5013 10.0408C10.6887 11.2998 7.36584 11.3765 4.35382 9.97197C4.01251 9.81281 3.68319 9.63837 3.36632 9.44983C3.12787 10.2584 2.99991 11.1142 2.99991 12C2.99991 13.9462 3.61763 15.748 4.6677 17.2203C6.83038 14.1875 10.3685 12.4987 13.9964 12.6219ZM6.047 18.7502C7.77258 16.059 10.7714 14.5382 13.8585 14.6191C13.723 15.3586 13.4919 16.093 13.1594 16.8062C12.3777 18.4825 11.1453 19.805 9.67385 20.6965C8.31043 20.3328 7.07441 19.6569 6.047 18.7502ZM11.9999 3C13.7846 3 15.4479 3.51946 16.847 4.41543C16.2113 5.54838 15.3593 6.4961 14.368 7.23057C13.3472 5.57072 11.8752 4.16433 10.027 3.21692C10.6619 3.07492 11.3222 3 11.9999 3ZM8.80619 4.84582C10.4462 5.61056 11.7474 6.80659 12.6379 8.23588C10.3464 9.24654 7.64722 9.30095 5.19906 8.15936C4.83384 7.98905 4.48541 7.79735 4.15458 7.58645C4.91365 6.24006 6.00929 5.10867 7.32734 4.30645C7.82672 4.44058 8.32138 4.61975 8.80619 4.84582Z"
+                                fill="currentColor" /></svg>
+                    </a>
+
+                    <a href="#"
+                        class="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="m.75 19h7.092c4.552 0 6.131-6.037 2.107-8.203 2.701-2.354 1.029-6.797-2.595-6.797h-6.604c-.414 0-.75.336-.75.75v13.5c0 .414.336.75.75.75zm.75-13.5h5.854c3.211 0 3.215 4.768 0 4.768h-5.854zm0 6.268h6.342c3.861 0 3.861 5.732 0 5.732h-6.342z" />
+                            <path
+                                d="m18.374 7.857c-3.259 0-5.755 2.888-5.635 5.159-.247 3.28 2.397 5.984 5.635 5.984 2.012 0 3.888-1.065 4.895-2.781.503-.857-.791-1.613-1.293-.76-.739 1.259-2.12 2.041-3.602 2.041-2.187 0-3.965-1.668-4.125-3.771 1.443.017 4.136-.188 8.987-.033.016 0 .027-.008.042-.008 2-.09-.189-5.831-4.904-5.831zm-3.928 4.298c1.286-3.789 6.718-3.676 7.89.064-4.064.097-6.496-.066-7.89-.064z" />
+                            <path d="m21.308 6.464c.993 0 .992-1.5 0-1.5h-5.87c-.993 0-.992 1.5 0 1.5z" /></svg>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div
+            class="container flex flex-col px-6 py-4 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center">
+            <div class="flex flex-col items-center w-full lg:flex-row lg:w-1/2">
+                <div class="flex justify-center order-2 mt-6 lg:mt-0 lg:space-y-3 lg:flex-col">
+                    <button
+                        class="w-3 h-3 mx-2 bg-gray-400 rounded-full lg:mx-0 focus:outline-none transition ease-in-out delay-150 bg-gray-400 hover:scale-110 hover:bg-blue-500 duration-300"></button>
+                    <button
+                        class="delay w-3 h-3 mx-2 bg-blue-500 rounded-full lg:mx-0 focus:outline-none transition ease-in-out delay-150 bg-blue-500 hover:scale-110 hover:bg-blue-500 duration-300"></button>
+                    <button
+                        class="w-3 h-3 mx-2 bg-gray-300 rounded-full lg:mx-0 focus:outline-none transition ease-in-out delay-150 bg-blue-500 hover:scale-110 hover:bg-blue-500 duration-300"></button>
+                    <button
+                        class="w-3 h-3 mx-2 bg-gray-300 rounded-full lg:mx-0 focus:outline-none transition ease-in-out delay-150 bg-blue-500 hover:scale-110 hover:bg-blue-500 duration-300"></button>
+                </div>
+
+                <div class="max-w-lg lg:mx-12 lg:order-2">
+                    <h1 class="text-3xl font-medium tracking-wide text-gray-800 dark:text-white lg:text-4xl">Skills</h1>
+                    <p class="mt-4 text-gray-600 dark:text-gray-300">
+                        <h1>
+                            <b>
+                                <i class="fa-brands fa-linux"></i>
+                                &nbsp; Linux
+                            </b>
+                        </h1>
+                    
+                    </p>
+                    <p class="mt-4 text-gray-600 dark:text-gray-300">
+                        <h1>
+                            <b>
+                                <i class="fa-brands fa-python"></i> 
+                                &nbsp; Python
+                            </b>
+                        </h1>
+                   
+                    </p>
+                    
+                    <p class="mt-4 text-gray-600 dark:text-gray-300">
+                        <h1>
+                            <b>
+                                <i class="fa-brands fa-wordpress"></i>
+                                &nbsp; WordPress
+                            </b>
+                        </h1>
+                    </p>
+                    
+                    <p class="mt-4 text-gray-600 dark:text-gray-300">
+                        <h1>
+                            <b>
+                                <i class="fa-solid fa-masks-theater"></i> 
+                                &nbsp; Ethical Hacker
+                            </b>
+                        </h1>
+                    
+                    </p>
+                    <p class="mt-4 text-gray-600 dark:text-gray-300">
+                        <h1>
+                            <b>
+                                <i class="fa-brands fa-html5"></i> 
+                                &nbsp; Web Development
+                            </b>
+                        </h1>
+                    
+                    </p>
+
+                    <p class="mt-4 text-gray-600 dark:text-gray-300">
+                        <h1>
+                            <b>
+                                <i class="fa-solid fa-hashtag"></i> 
+                                &nbsp; Social Media Managment
+                            </b>
+                        </h1>
+                    
+                    </p>
+
+                    <div class="mt-6">
+
+                        <a href="#"
+                            class="block px-3 py-2 font-semibold text-center text-white transition-colors duration-300 transform bg-blue-500 rounded-md lg:inline hover:bg-blue-400"><i
+                                class="fa-solid fa-money-check-dollar iconcntr"></i> &nbsp; Hire Me !!</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center w-full h-96 lg:w-1/2">
+
+                <img class="object-cover w-full h-full max-w-2xl rounded-md"
+                    src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                    alt="apple watch photo">
+
+            </div>
+
+        </div>
+    </header>
+
+
+    <section class="bg-white dark:bg-gray-900 reveal">
+        <div class="container px-6 py-10 mx-auto">
+            <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">These are <br> My <span class="underline decoration-blue-500">Skills</span></h1>
+    
+            <p class="mt-4 text-gray-500 xl:mt-6 dark:text-gray-300">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum quam voluptatibus
+            </p>
+    
+            <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 md:grid-cols-2 xl:grid-cols-3">
+                <div class="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl">
+                    <span class="inline-block text-blue-500 dark:text-blue-400">
+                        <i class="fa-brands fa-python skillsicon"></i> 
+                    </span>
+    
+                    <h1 class="text-2xl font-semibold text-gray-700 capitalize dark:text-white">Python</h1>
+    
+                    <p class="text-gray-500 dark:text-gray-300">
+                        Full Stack Python Developer, capable of designing Flask applications, Network Programming, GUIs, web GUIs, and many more..
+                    </p>
+    
+                    <a href="#" class="inline-flex p-2 text-blue-500 capitalize transition-colors duration-300 transform bg-blue-100 rounded-full rtl:-scale-x-100 dark:bg-blue-500 dark:text-white hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </a>
+                </div>
+    
+                <div class="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl">
+                    <span class="inline-block text-blue-500 dark:text-blue-400">
+                        <i class="fa-brands fa-linux skillsicon"></i>
+                    </span>
+    
+                    <h1 class="text-2xl font-semibold text-gray-700 capitalize dark:text-white">Web Development</h1>
+    
+                    <p class="text-gray-500 dark:text-gray-300">
+                        I do web development on the front end and can modify web templates and write blogs for you.<br> HTML CSS<br>WordPress also
+                    </p>
+    
+                    <a href="#" class="inline-flex p-2 text-blue-500 capitalize transition-colors duration-300 transform bg-blue-100 rounded-full rtl:-scale-x-100 dark:bg-blue-500 dark:text-white hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </a>
+                </div>
+    
+                <div class="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl">
+                    <span class="inline-block text-blue-500 dark:text-blue-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                        </svg>
+                    </span>
+    
+                    <h1 class="text-2xl font-semibold text-gray-700 capitalize dark:text-white">Linux And Pentesting</h1>
+    
+                    <p class="text-gray-500 dark:text-gray-300">
+                        An expert in Linux and sometimes pentesting can help to repair a bricked system, and from the pentesting side, I can find vulnerabilities on your system or network.
+                    </p>
+    
+                    <a href="#" class="inline-flex p-2 text-blue-500 capitalize transition-colors duration-300 transform bg-blue-100 rounded-full rtl:-scale-x-100 dark:bg-blue-500 dark:text-white hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="min-h-screen bg-white dark:bg-gray-900 reveal">
+        <div class="container px-6 py-10 mx-auto">
+            <div class="lg:flex lg:items-center lg:-mx-10">
+                <div class="lg:w-1/2 lg:mx-10">
+                    <h1 class="text-3xl font-semibold text-gray-800 capitalize dark:text-white lg:text-5xl">Get In Touch</h1>
+    
+                    <p class="mt-4 text-gray-500 dark:text-gray-400">
+                        Ask us everything and we would love
+                        to hear from you
+                    </p>
+    
+                    <form class="mt-12">
+                        <div class="-mx-2 md:items-center md:flex">
+                            <div class="flex-1 px-2">
+                                <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Full Name</label>
+                                <input type="text" placeholder="John Doe" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                            </div>
+    
+                            <div class="flex-1 px-2 mt-4 md:mt-0">
+                                <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Email address</label>
+                                <input type="email" placeholder="johndoe@example.com" class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                            </div>
+                        </div>
+    
+                        <div class="w-full mt-4">
+                            <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Message</label>
+                            <textarea class="block w-full h-22 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-56 dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Message"></textarea>
+                        </div>
+    
+                        <button class="w-full px-6 py-3 mt-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                            get in touch
+                        </button>
+                    </form>
+                </div>
+    
+                <div class="mt-12 lg:flex lg:mt-0 lg:flex-col lg:items-center lg:w-1/2 lg:mx-10">
+                    <img class="hidden object-cover mx-auto rounded-full lg:block shrink-0 w-96 h-96 imgskill" src="images/myimage.jpg" alt="">
+    
+                    <div class="mt-6 space-y-8 md:mt-8">
+                        <p class="flex items-start -mx-2">
+                            <i class="fa-brands fa-instagram skillsiconsocial"></i>
+    
+                            <span class="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">
+                                rajyavardhan.8
+                            </span>
+                        </p>
+    
+                        <p class="flex items-start -mx-2">
+                            <i class="fa-solid fa-envelope skillsiconsocial"></i>
+    
+                            <span class="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">bithale03@gmail.com</span>
+                        </p>
+    
+                        <p class="flex items-start -mx-2">
+                            <i class="fa-brands fa-telegram skillsiconsocial"></i>
+    
+                            <span class="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">@rajya08</span>
+                        </p>
+                    </div>
+                    <!--
+                    <div class="mt-6 w-80 md:mt-8">
+                        <h3 class="text-gray-600 dark:text-gray-300 ">Follow us</h3>
+    
+                        <div class="flex mt-4 -mx-1.5 ">
+                            <a class="mx-1.5 dark:hover:text-blue-400 text-gray-400 transition-colors duration-300 transform hover:text-blue-500" href="#">
+                                <svg class="w-10 h-10 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18.6668 6.67334C18.0002 7.00001 17.3468 7.13268 16.6668 7.33334C15.9195 6.49001 14.8115 6.44334 13.7468 6.84201C12.6822 7.24068 11.9848 8.21534 12.0002 9.33334V10C9.83683 10.0553 7.91016 9.07001 6.66683 7.33334C6.66683 7.33334 3.87883 12.2887 9.3335 14.6667C8.0855 15.498 6.84083 16.0587 5.3335 16C7.53883 17.202 9.94216 17.6153 12.0228 17.0113C14.4095 16.318 16.3708 14.5293 17.1235 11.85C17.348 11.0351 17.4595 10.1932 17.4548 9.34801C17.4535 9.18201 18.4615 7.50001 18.6668 6.67268V6.67334Z" />
+                                </svg>
+                            </a>
+    
+                            <a class="mx-1.5 dark:hover:text-blue-400 text-gray-400 transition-colors duration-300 transform hover:text-blue-500" href="#">
+                                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.2 8.80005C16.4731 8.80005 17.694 9.30576 18.5941 10.2059C19.4943 11.1061 20 12.327 20 13.6V19.2H16.8V13.6C16.8 13.1757 16.6315 12.7687 16.3314 12.4687C16.0313 12.1686 15.6244 12 15.2 12C14.7757 12 14.3687 12.1686 14.0687 12.4687C13.7686 12.7687 13.6 13.1757 13.6 13.6V19.2H10.4V13.6C10.4 12.327 10.9057 11.1061 11.8059 10.2059C12.7061 9.30576 13.927 8.80005 15.2 8.80005Z" fill="currentColor" />
+                                    <path d="M7.2 9.6001H4V19.2001H7.2V9.6001Z" fill="currentColor" />
+                                    <path d="M5.6 7.2C6.48366 7.2 7.2 6.48366 7.2 5.6C7.2 4.71634 6.48366 4 5.6 4C4.71634 4 4 4.71634 4 5.6C4 6.48366 4.71634 7.2 5.6 7.2Z" fill="currentColor" />
+                                </svg>
+                            </a>
+    
+                            <a class="mx-1.5 dark:hover:text-blue-400 text-gray-400 transition-colors duration-300 transform hover:text-blue-500" href="#">
+                                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 10.2222V13.7778H9.66667V20H13.2222V13.7778H15.8889L16.7778 10.2222H13.2222V8.44444C13.2222 8.2087 13.3159 7.9826 13.4826 7.81591C13.6493 7.64921 13.8754 7.55556 14.1111 7.55556H16.7778V4H14.1111C12.9324 4 11.8019 4.46825 10.9684 5.30175C10.1349 6.13524 9.66667 7.2657 9.66667 8.44444V10.2222H7Z" fill="currentColor" />
+                                </svg>
+                            </a>
+    
+                            <a class="mx-1.5 dark:hover:text-blue-400 text-gray-400 transition-colors duration-300 transform hover:text-blue-500" href="#">
+                                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.9294 7.72275C9.65868 7.72275 7.82715 9.55428 7.82715 11.825C7.82715 14.0956 9.65868 15.9271 11.9294 15.9271C14.2 15.9271 16.0316 14.0956 16.0316 11.825C16.0316 9.55428 14.2 7.72275 11.9294 7.72275ZM11.9294 14.4919C10.462 14.4919 9.26239 13.2959 9.26239 11.825C9.26239 10.354 10.4584 9.15799 11.9294 9.15799C13.4003 9.15799 14.5963 10.354 14.5963 11.825C14.5963 13.2959 13.3967 14.4919 11.9294 14.4919ZM17.1562 7.55495C17.1562 8.08692 16.7277 8.51178 16.1994 8.51178C15.6674 8.51178 15.2425 8.08335 15.2425 7.55495C15.2425 7.02656 15.671 6.59813 16.1994 6.59813C16.7277 6.59813 17.1562 7.02656 17.1562 7.55495ZM19.8731 8.52606C19.8124 7.24434 19.5197 6.10901 18.5807 5.17361C17.6453 4.23821 16.51 3.94545 15.2282 3.88118C13.9073 3.80621 9.94787 3.80621 8.62689 3.88118C7.34874 3.94188 6.21341 4.23464 5.27444 5.17004C4.33547 6.10544 4.04628 7.24077 3.98201 8.52249C3.90704 9.84347 3.90704 13.8029 3.98201 15.1238C4.04271 16.4056 4.33547 17.5409 5.27444 18.4763C6.21341 19.4117 7.34517 19.7045 8.62689 19.7687C9.94787 19.8437 13.9073 19.8437 15.2282 19.7687C16.51 19.708 17.6453 19.4153 18.5807 18.4763C19.5161 17.5409 19.8089 16.4056 19.8731 15.1238C19.9481 13.8029 19.9481 9.84704 19.8731 8.52606ZM18.1665 16.5412C17.8881 17.241 17.349 17.7801 16.6456 18.0621C15.5924 18.4799 13.0932 18.3835 11.9294 18.3835C10.7655 18.3835 8.26272 18.4763 7.21307 18.0621C6.51331 17.7837 5.9742 17.2446 5.69215 16.5412C5.27444 15.488 5.37083 12.9888 5.37083 11.825C5.37083 10.6611 5.27801 8.15832 5.69215 7.10867C5.97063 6.40891 6.50974 5.8698 7.21307 5.58775C8.26629 5.17004 10.7655 5.26643 11.9294 5.26643C13.0932 5.26643 15.596 5.17361 16.6456 5.58775C17.3454 5.86623 17.8845 6.40534 18.1665 7.10867C18.5843 8.16189 18.4879 10.6611 18.4879 11.825C18.4879 12.9888 18.5843 15.4916 18.1665 16.5412Z" fill="currentColor" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
