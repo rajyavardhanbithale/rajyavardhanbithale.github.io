@@ -33,11 +33,11 @@
 }
 
 .spinning-object2 {
-  animation: spin2 3s ease-in-out;
+  animation: spin2 2s ease-in-out;
 }
 
 .spinning-object3 {
-  animation: spin1 4s ease-in-out;
+  animation: spin1 1s ease-in-out;
 }
 
 @keyframes spin1 {
@@ -64,5 +64,6 @@
 .airplane-icon {
   position: absolute;
   font-size: 24px;
-  transition: transform 2s ease-in-out; /* Adjust the duration as needed */
+  transition: transform 2s ease-in-out; 
 }
+
