@@ -37,7 +37,7 @@
 }
 
 .spinning-object3 {
-  animation: spin1 1s ease-in-out;
+  animation: spin1 3s ease-in-out;
 }
 
 @keyframes spin1 {

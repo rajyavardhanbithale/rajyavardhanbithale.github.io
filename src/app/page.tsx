@@ -14,6 +14,7 @@ const MMD = Major_Mono_Display({
 
 export default function Home() {
   const theme = 'forest'
+  const theme_count = 3
 
 
   return (
