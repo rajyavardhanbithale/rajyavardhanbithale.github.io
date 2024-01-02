@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&family=Major+Mono+Display&family=Merienda');
+*{
+    /* outline: solid red 1px; */
+    overflow: hidden;
+}
+
+
+
+.nav-glass {
+  backdrop-filter: blur(5px) saturate(137%);
+  -webkit-backdrop-filter: blur(5px) saturate(137%);
+  background-color: rgba(117, 127, 122, 0.19);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+
+}
+
+.logo-brand {
+  font-weight: normal;
+  letter-spacing: 2px;
+  text-shadow: 1px 0 0 currentColor, 1px 0 0 currentColor;
+}
+
+.text-name {
+  text-shadow: 21px 4px 17px rgba(0, 0, 0, 0.35);
+}
+
+.spinning-object1 {
+  animation: spin1 3s ease-in-out;
+}
+
+.spinning-object2 {
+  animation: spin2 3s ease-in-out;
+}
+
+.spinning-object3 {
+  animation: spin1 4s ease-in-out;
+}
+
+@keyframes spin1 {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin2 {
+  0% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+
+.airplane-icon {
+  position: absolute;
+  font-size: 24px;
+  transition: transform 2s ease-in-out; /* Adjust the duration as needed */
+}
