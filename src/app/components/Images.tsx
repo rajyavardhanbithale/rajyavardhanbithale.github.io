@@ -24,7 +24,7 @@ export default function Images(props: ImagesProps) {
         sizes="100vw"
         style={{ width: '30%', height: 'auto' }}
         className="absolute z-40 spinning-object1"
-        priority={true}
+        priority
       />
 
       <Image
@@ -35,7 +35,7 @@ export default function Images(props: ImagesProps) {
         sizes="100vw"
         style={{ width: '43%', height: 'auto' }}
         className="absolute z-30 spinning-object2"
-        priority={true}
+        priority
       />
 
       <Image
@@ -46,7 +46,7 @@ export default function Images(props: ImagesProps) {
         sizes="100vw"
         style={{ width: '53%', height: 'auto' }}
         className="absolute z-10 spinning-object3"
-        priority={true}
+        priority
       />
 
       <Image
@@ -56,7 +56,7 @@ export default function Images(props: ImagesProps) {
         alt="outer"
         sizes="100vw"
         style={{ width: '100%', height: 'auto' }}
-        priority={true}
+        priority
       />
     </>
   )

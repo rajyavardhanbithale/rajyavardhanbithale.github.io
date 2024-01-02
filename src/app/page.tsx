@@ -42,20 +42,6 @@ export default function Home() {
       </div>
 
       <div className="md:mt-[20%] lg:mt-0">
-        <div className="flex w-full justify-center items-center align-middle">
-          <nav className=" text-white p-4 fixed top-5 w-3/4 z-50 nav-glass rounded-full ">
-            <div className="container mx-auto flex justify-between items-center">
-              <div className={`text-xl font-bold logo-brand ${MMD.className}`}>rAjyAvArdhAn</div>
-
-              <ul className="flex space-x-4">
-                <li><a href="#" className="hover:text-gray-300">Home</a></li>
-                <li><a href="#" className="hover:text-gray-300">About</a></li>
-                <li><a href="#" className="hover:text-gray-300">Contact</a></li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-
         <div className="flex flex-col gap-5 items-center justify-center w-full min-h-screen absolute z-50 md:-mt-40 lg:md:-mt-0">
           <div className="text-center animate-jump-in animate-delay-[2500ms]">
             <div className="lg:text-4xl text-3xl text-name  text-white">Hello, I&apos;m</div>
@@ -76,7 +62,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-row gap-5 items-end p-8 justify-center w-full min-h-screen absolute z-50 -mt-[23rem] lg:-mt-0">
+        <div className="flex flex-row gap-5 items-end p-8 justify-center w-full bottom-0 absolute z-50 -mt-[23rem] lg:-mt-0">
 
           {[...Array(themeCount)].map((_, index) => (
             <div
@@ -87,16 +73,13 @@ export default function Home() {
           ))}
         </div>
 
-
-
         <div className="flex items-center z-0 justify-center w-full lg:min-h-screen">
           <Images theme={selectedTheme} key={seed}></Images>
         </div>
-
-
 
       </div>
 
     </>
   )
 }
+
