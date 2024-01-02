@@ -53,6 +53,7 @@ export default function Images(props: ImagesProps) {
         alt="outer"
         sizes="100vw"
         style={{ width: '100%', height: 'auto' }}
+       
       />
     </>
   )
