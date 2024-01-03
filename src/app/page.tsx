@@ -3,6 +3,7 @@ import { ImRadioChecked2, ImRadioUnchecked } from "react-icons/im";
 import { Major_Mono_Display } from 'next/font/google';
 import { useEffect, useState } from "react";
 import Images from "./components/Images";
+import Link from "next/link";
 
 
 
@@ -16,8 +17,8 @@ export default function Home() {
   const [availableThemesList, setAvailableThemesList] = useState([''])
   const [seed, setSeed] = useState(1);
   const [screenSize, setScreenSize] = useState({
-    width:0,
-    height:0,
+    width: window.innerWidth,
+    height: window.innerHeight,
   });
 
 
@@ -34,21 +35,23 @@ export default function Home() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
+  console.log(screenSize.width);
   let availableThemes: string[];
-  
+
   // updating the theme list base of the device width
   useEffect(() => {
     if (screenSize?.width <= 1024) {
-      availableThemes = ['road_mobile','beach_mobile','desert_mobile'];
+      availableThemes = ['road_mobile', 'beach_mobile', 'desert_mobile'];
     } else {
       availableThemes = ['forest', 'desert', 'beach', 'ocean'];
     }
+    
+    
     setSelectedTheme(availableThemes[0])
     setAvailableThemesList(availableThemes)
   }, [screenSize]);
 
-  
+
   // setting theme configuration
   const theme: string = selectedTheme
   const themeCount: number = availableThemesList?.length
@@ -79,7 +82,9 @@ export default function Home() {
 
         <div className="flex flex-col gap-5 items-start p-4 justify-center w-full min-h-screen absolute z-50 -mt-36 lg:-mt-0">
           <ImRadioChecked2 className="text-white lg:text-2xl text-lg font-bold" />
-          <ImRadioUnchecked className="text-white lg:text-2xl text-lg font-bold" />
+          <Link href={"/card"}>
+            <ImRadioUnchecked className="text-white lg:text-2xl text-lg font-bold" />
+          </Link>
           <ImRadioUnchecked className="text-white lg:text-2xl text-lg font-bold" />
           <ImRadioUnchecked className="text-white lg:text-2xl text-lg font-bold" />
           <div>
@@ -101,7 +106,7 @@ export default function Home() {
 
 
       </div>
-      <div className="flex justify-center  items-center h-screen md:-mt-48 lg:-mt-0">
+      <div className="flex justify-center  items-center h-screen md:-mt-36 lg:-mt-0">
         <Images theme={selectedTheme} key={seed}></Images>
       </div>
 
