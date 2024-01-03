@@ -175,7 +175,7 @@ export default function Card() {
                         <div onMouseLeave={handleClose} className={`${openAnimation ? "animate-jump-in animate-duration-1000" : "animate-jump-out animate-duration-250"}  absolute z-[70] w-3/4 lg:w-1/2 skill-card-glass justify-center items-center text-center rounded-2xl shadow-2xl`}>
                             <span onClick={handleClose} className="z-[60] absolute right-0 px-2 py-1 text-2xl text-gray-800"><IoCloseCircleSharp /></span>
                             <div className="flex flex-wrap max-w-screen-md mx-auto gap-1">
-                                {skill?.map((data, idx) => (
+                                {skill?.map((data:any, idx) => (
                                     <div key={idx} className="flex flex-col h-36 w-full md:w-1/6 items-center mx-auto relative p-4">
                                         <img src={`images/skill/${data?.name}.png`} className="w-20 h-24  object-contain my-auto drop-shadow-2xl" alt="" />
                                         <span className="text-lg bottom-0 text-white font-semibold">{data.title}</span>
