@@ -16,8 +16,8 @@ export default function Home() {
   const [availableThemesList, setAvailableThemesList] = useState([''])
   const [seed, setSeed] = useState(1);
   const [screenSize, setScreenSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width:0,
+    height:0,
   });
 
 

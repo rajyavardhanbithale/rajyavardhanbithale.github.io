@@ -1,45 +1,122 @@
 'use client'
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ImRadioChecked2, ImRadioUnchecked } from "react-icons/im";
-import { IoBarbellOutline, IoCard, IoCardOutline, IoLocationOutline, IoLogoGithub, IoLogoInstagram, IoLogoLinkedin, IoMailOutline } from "react-icons/io5";
+import { IoBarbellOutline, IoCard, IoCardOutline, IoCloseCircle, IoCloseCircleSharp, IoLocationOutline, IoLogoGithub, IoLogoInstagram, IoLogoLinkedin, IoMailOutline } from "react-icons/io5";
 import { IoLocation } from "react-icons/io5";
 
 
 export default function Card() {
-    const [selectedTheme, setSelectedTheme] = useState('forest')
-    const [seed, setSeed] = useState(1);
+    const [selectedTheme, setSelectedTheme] = useState('')
+    const [availableThemesList, setAvailableThemesList] = useState([''])
+    const [open, setOpen] = useState(false);
+    const [openAnimation, setOpenAnimation] = useState(false);
+    const [skill, setSkill] = useState([])
+    const [screenSize, setScreenSize] = useState({
+        width: 0,
+        height: 0,
+    });
 
-    const availableThemes: string[] = ['forest', 'desert', 'beach', 'ocean']
+
+    // window height and width to filter out theme for mobile and desktop
+    useEffect(() => {
+        const handleResize = () => {
+            setScreenSize({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    let availableThemes: string[];
+
+    // updating the theme list base of the device width
+    useEffect(() => {
+        if (screenSize?.width <= 1024) {
+            availableThemes = ['road_mobile', 'beach_mobile', 'desert_mobile'];
+        } else {
+            availableThemes = ['forest', 'desert', 'beach', 'ocean'];
+        }
+        setSelectedTheme(availableThemes[0])
+        setAvailableThemesList(availableThemes)
+    }, [screenSize]);
+
+
+    // setting theme configuration
     const theme: string = selectedTheme
-    const themeCount: number = availableThemes.length
-    const themeActive: number = availableThemes.indexOf(theme)
+    const themeCount: number = availableThemesList?.length
+    const themeActive: number = availableThemesList?.indexOf(theme)
 
+
+    // handle the theme change using the bottom button
     const handleThemeUpdate = (themeIndex: number) => {
-        setSelectedTheme(availableThemes[themeIndex])
-        setSeed(Math.random());
+        setSelectedTheme(availableThemesList[themeIndex])
     }
+
+
+    const handleOpen = (skills: any) => {
+        setOpenAnimation(!openAnimation)
+        setTimeout(() => {
+            setOpen(!open)
+            setSkill(skills)
+        }, 200);
+    }
+
+    const skillFrontEnd = [
+        {
+            "name": "next",
+            "title": "Next.JS"
+        }, {
+            "name": "react",
+            "title": "React.JS"
+        }, {
+            "name": "javascript",
+            "title": "Javascript"
+        }, {
+            "name": "tailwind",
+            "title": "Tailwind"
+        }, {
+            "name": "figma",
+            "title": "Figma"
+        }, {
+            "name": "inkscape",
+            "title": "Inkscape"
+        },
+    ]
+
+    const skillBackEnd = [
+        {
+            "name": "next",
+            "title": "Next.JS"
+        }, 
+    ]
 
 
     return (
         <>
-            <div className="lg:hidden block">
-
-                <Image
-                    src={`/images/${selectedTheme}/background.webp`}
-                    width={0}
-                    height={0}
-                    alt="middle"
-                    sizes="100vw"
-                    style={{ width: '105%', height: '150%' }}
-                    className="absolute -z-10 blur-img -mt-56"
-                />
-            </div>
 
             <div className="md:mt-[20%] lg:mt-0">
                 <div className="flex flex-col gap-5 items-center justify-center w-full min-h-screen absolute z-50 md:-mt-40 lg:md:-mt-0">
-                    <PopUP></PopUP>
-                    <div className="flex shadow-2xl  items-center w-1/2 rounded-2xl card-glass">
+                    {open &&
+                        <div onMouseLeave={handleOpen} className={`${openAnimation ? "animate-jump-in" : "animate-jump-out animate-duration-250"}  absolute z-[70] w-3/4 lg:w-1/2 card-glass justify-center items-center text-center rounded-2xl shadow-2xl`}>
+                            <span onClick={handleOpen} className="z-[60] absolute right-0 px-2 py-1 text-2xl text-gray-800"><IoCloseCircleSharp /></span>
+                            <div className="flex flex-wrap max-w-screen-md mx-auto gap-1">
+                                {skill?.map((data, idx) => (
+                                    <div key={idx} className="flex flex-col h-36 w-full md:w-1/6 items-center mx-auto relative p-4">
+                                        <img src={`images/skill/${data.name}.png`} className="w-20 h-24  object-contain my-auto" alt="" />
+                                        <span className="text-lg bottom-0 text-white font-semibold">{data.title}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    }
+
+
+                    <div className="flex shadow-2xl  items-center w-3/4 lg:w-1/2 rounded-2xl card-glass">
                         <div>
 
                             <Image
@@ -61,7 +138,7 @@ export default function Card() {
                                 What do I know ?
                                 <ul>
                                     <li className="text-xl px-5 py-0.5 text-gray-50">+ Backend Development</li>
-                                    <li className="text-lg px-5 py-0.5 text-gray-100">+ Full Stack Web Development</li>
+                                    <li onMouseEnter={() => handleOpen(skillFrontEnd)} className="text-lg px-5 py-0.5 text-gray-100">+ Full Stack Web Development</li>
                                     <li className="text-lg px-5 py-0.5 text-gray-100">+ Cloud</li>
                                     <li className="text-xl px-5 py-0.5 text-gray-50">+ Linux</li>
                                     <li className="text-lg px-5 py-0.5 text-gray-100">+ ML/DL*</li>
@@ -112,19 +189,19 @@ export default function Card() {
                     ))}
                 </div>
 
-                <div className="flex items-center z-0 justify-center w-full lg:min-h-screen">
-                    <Image
-                        src={`/images/${selectedTheme}/background.webp`}
-                        width={0}
-                        height={0}
-                        alt="outer"
-                        sizes="100vw"
-                        style={{ width: '100%', height: 'auto' }}
-                        priority={true}
-                    />
-                </div>
 
 
+            </div>
+            <div className="flex justify-center  items-center h-screen md:-mt-36 lg:-mt-0">
+                <Image
+                    src={`/images/${selectedTheme}/background.webp`}
+                    width={0}
+                    height={0}
+                    alt="outer"
+                    sizes="100vw"
+                    style={{ width: '100%', height: 'auto' }}
+                    priority={true}
+                />
             </div>
 
 
@@ -141,23 +218,26 @@ function PopUP() {
         }, {
             "name": "react",
             "title": "React.JS"
-        },{
+        }, {
             "name": "javascript",
             "title": "Javascript"
-        },{
+        }, {
             "name": "tailwind",
-            "title": "Tailwind"
+            "title": "Tailwind CSS"
         },
     ]
+    const handleClose = () => {
+
+    }
     return (
         <>
-            <div className="absolute z-50 w-1/2 card-glass justify-center items-center text-center">
+            <div className="absolute z-50 w-3/4 card-glass justify-center items-center text-center rounded-2xl shadow-2xl">
+                <span onClick={handleClose} className="absolute right-0 px-2 py-1 text-2xl text-gray-800"><IoCloseCircleSharp /></span>
                 <div className="flex gap-5">
-
                     {skillFrontEnd.map((data, idx) => (
-                        <div key={idx} className="flex flex-col h-28 items-center relative">
-                            <img src={`images/skill/${data.name}.png`} className="w-20 h-24 mb-6 object-contain my-auto" alt="" />
-                            <p className="absolute bottom-0 text-white">{data.title}</p>
+                        <div key={idx} className="flex flex-col h-36 w-full items-center mx-auto relative p-4 ">
+                            <img src={`images/skill/${data.name}.png`} className="w-20 h-24  object-contain my-auto" alt="" />
+                            <span className="text-lg bottom-0 text-white font-semibold">{data.title}</span>
                         </div>
                     ))}
                 </div>

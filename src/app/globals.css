@@ -4,7 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Exo+2&family=Major+Mono+Display&family=Merienda');
 *{
-    /* outline: solid red 1px; */
+    outline: solid red 1px;
     overflow: hidden;
 }
 
