@@ -16,9 +16,10 @@ export default function Home() {
   const [selectedTheme, setSelectedTheme] = useState('')
   const [availableThemesList, setAvailableThemesList] = useState([''])
   const [seed, setSeed] = useState(1);
+  
   const [screenSize, setScreenSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: (typeof window !== 'undefined' ? window.innerWidth : 0),
+    height: (typeof window !== 'undefined' ? window.innerHeight : 0),
   });
 
 
@@ -106,7 +107,7 @@ export default function Home() {
 
 
       </div>
-      <div className="flex justify-center  items-center h-screen md:-mt-36 lg:-mt-0">
+      <div className="flex justify-center  items-center h-screen md:-mt-48 lg:-mt-0">
         <Images theme={selectedTheme} key={seed}></Images>
       </div>
 
