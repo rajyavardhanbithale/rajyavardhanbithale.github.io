@@ -1,10 +1,9 @@
 'use client'
-import { ImRadioChecked2 } from "react-icons/im";
-import { ImRadioUnchecked } from "react-icons/im";
+import { ImRadioChecked2, ImRadioUnchecked } from "react-icons/im";
 import { Major_Mono_Display } from 'next/font/google';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Images from "./components/Images";
-import Image from "next/image";
+
 
 
 const MMD = Major_Mono_Display({
@@ -13,18 +12,56 @@ const MMD = Major_Mono_Display({
 })
 
 export default function Home() {
-  const [selectedTheme, setSelectedTheme] = useState('road')
+  const [selectedTheme, setSelectedTheme] = useState('')
+  const [availableThemesList, setAvailableThemesList] = useState([''])
   const [seed, setSeed] = useState(1);
+  const [screenSize, setScreenSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
 
-  const availableThemes: string[] = ['forest', 'desert', 'beach', 'ocean']
+
+  // window height and width to filter out theme for mobile and desktop
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  let availableThemes: string[];
+  
+  // updating the theme list base of the device width
+  useEffect(() => {
+    if (screenSize?.width <= 1024) {
+      availableThemes = ['road_mobile','beach_mobile','desert_mobile'];
+    } else {
+      availableThemes = ['forest', 'desert', 'beach', 'ocean'];
+    }
+    setSelectedTheme(availableThemes[0])
+    setAvailableThemesList(availableThemes)
+  }, [screenSize]);
+
+  
+  // setting theme configuration
   const theme: string = selectedTheme
-  const themeCount: number = availableThemes.length
-  const themeActive: number = availableThemes.indexOf(theme)
+  const themeCount: number = availableThemesList?.length
+  const themeActive: number = availableThemesList?.indexOf(theme)
 
+
+  // handle the theme change using the bottom button
   const handleThemeUpdate = (themeIndex: number) => {
-    setSelectedTheme(availableThemes[themeIndex])
+    setSelectedTheme(availableThemesList[themeIndex])
     setSeed(Math.random());
   }
+
+
 
   return (
     <>
