@@ -13,7 +13,7 @@ const MMD = Major_Mono_Display({
 })
 
 export default function Home() {
-  const [selectedTheme, setSelectedTheme] = useState('forest')
+  const [selectedTheme, setSelectedTheme] = useState('road')
   const [seed, setSeed] = useState(1);
 
   const availableThemes: string[] = ['forest', 'desert', 'beach', 'ocean']
@@ -28,18 +28,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="lg:hidden block">
 
-        <Image
-          src={`/images/${selectedTheme}/background.webp`}
-          width={0}
-          height={0}
-          alt="middle"
-          sizes="100vw"
-          style={{ width: '105%', height: '150%' }}
-          className="absolute -z-10 blur-img -mt-56"
-        />
-      </div>
 
       <div className="md:mt-[20%] lg:mt-0">
         <div className="flex flex-col gap-5 items-center justify-center w-full min-h-screen absolute z-50 md:-mt-40 lg:md:-mt-0">
@@ -73,11 +62,12 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="flex items-center z-0 justify-center w-full lg:min-h-screen">
-          <Images theme={selectedTheme} key={seed}></Images>
-        </div>
 
       </div>
+      <div className="flex justify-center  items-center h-screen md:-mt-48 lg:-mt-0">
+        <Images theme={selectedTheme} key={seed}></Images>
+      </div>
+
 
     </>
   )

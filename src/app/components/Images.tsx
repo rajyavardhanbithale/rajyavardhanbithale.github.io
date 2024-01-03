@@ -16,14 +16,14 @@ export default function Images(props: ImagesProps) {
 
       {/* <Image src={`/images/${props.theme}/background.webp`} height={100} width={200}></Image> */}
 
-      <Image
+      {/* <Image
         src={`/images/${props.theme}/inner.webp`}
         width={0}
         height={0}
         alt="inner"
         sizes="100vw"
         style={{ width: '30%', height: 'auto' }}
-        className="absolute z-40 spinning-object1"
+        className="absolute md:hidden lg:block z-40 spinning-object1"
         priority
       />
 
@@ -34,7 +34,7 @@ export default function Images(props: ImagesProps) {
         alt="middle"
         sizes="100vw"
         style={{ width: '43%', height: 'auto' }}
-        className="absolute z-30 spinning-object2"
+        className="absolute z-30 spinning-object2 md:hidden lg:block"
         priority
       />
 
@@ -45,10 +45,41 @@ export default function Images(props: ImagesProps) {
         alt="outer"
         sizes="100vw"
         style={{ width: '53%', height: 'auto' }}
-        className="absolute z-10 spinning-object3"
+        className="absolute z-10 spinning-object3 md:hidden lg:block"
+        priority
+      /> */}
+      {/* mobile responsive */}
+      <Image
+        src={`/images/${props.theme}/inner.webp`}
+        width={0}
+        height={0}
+        alt="inner"
+        sizes="100vw"
+        className="absolute w-[46%] lg:w-[29%] z-40 spinning-object1"
         priority
       />
 
+      <Image
+        src={`/images/${props.theme}/middle.webp`}
+        width={0}
+        height={0}
+        alt="middle"
+        sizes="100vw"
+        className="absolute w-[67%] lg:w-[42%] z-30 spinning-object2"
+        priority
+      />
+
+      <Image
+        src={`/images/${props.theme}/outer.webp`}
+        width={0}
+        height={0}
+        alt="outer"
+        sizes="100vw"
+        className="absolute w-[87%] lg:w-[52%] z-10 spinning-object3"
+        priority
+      />
+
+      {/* Common image   */}
       <Image
         src={`/images/${props.theme}/background.webp`}
         width={0}
