@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
       <div className="flex w-full justify-center items-center align-middle">
-          <nav className=" text-white p-4 fixed top-5 w-3/4 z-50 nav-glass rounded-full ">
+          <nav id='showMe' className=" text-white p-4 fixed top-5 w-3/4 z-50 nav-glass rounded-full ">
             <div className="container mx-auto flex justify-between items-center">
               <div className={`text-xl font-bold logo-brand ${MMD.className}`}>rAjyAvArdhAn</div>
 

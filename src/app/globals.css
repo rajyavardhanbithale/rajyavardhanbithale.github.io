@@ -30,17 +30,17 @@
 
 .spinning-object1 {
   animation: spin1 3s ease-in-out;
-  animation-delay: 1.5s;
+  animation-delay: 0s;
 }
 
 .spinning-object2 {
   animation: spin2 2s ease-in-out;
-  animation-delay: 1.5s;
+  animation-delay: 0s;
 }
 
 .spinning-object3 {
   animation: spin1 3s ease-in-out;
-  animation-delay: 1.5s;
+  animation-delay: 0s;
 }
 
 @keyframes spin1 {
@@ -90,4 +90,63 @@
   -webkit-backdrop-filter: blur(20px) saturate(137%);
   background-color: rgba(117, 127, 122, 0.40);
   /* border: 1px solid rgba(255, 255, 255, 0.125); */
+}
+
+
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #222222;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  4.9% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  5% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
+
+
+#showMe {
+  animation: cssAnimation 0s 3s forwards;
+  visibility: hidden;
+}
+
+@keyframes cssAnimation {
+  to   { visibility: visible; }
 }
