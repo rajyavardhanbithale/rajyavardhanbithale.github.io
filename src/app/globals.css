@@ -30,17 +30,17 @@
 
 .spinning-object1 {
   animation: spin1 3s ease-in-out;
-  animation-delay: 2s;
+  animation-delay: 1.5s;
 }
 
 .spinning-object2 {
   animation: spin2 2s ease-in-out;
-  animation-delay: 2s;
+  animation-delay: 1.5s;
 }
 
 .spinning-object3 {
   animation: spin1 3s ease-in-out;
-  animation-delay: 2s;
+  animation-delay: 1.5s;
 }
 
 @keyframes spin1 {
