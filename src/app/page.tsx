@@ -19,6 +19,11 @@ export default function Home() {
   const [seed, setSeed] = useState(1);
   const [loading, setLoading] = useState(true)
 
+  
+  const y = sessionStorage.getItem("auth")
+  console.log(y);
+  
+
   const [screenSize, setScreenSize] = useState({
     width: (typeof window !== 'undefined' ? window.innerWidth : 0),
     height: (typeof window !== 'undefined' ? window.innerHeight : 0),
@@ -27,6 +32,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false)
+      sessionStorage.setItem("auth","mng");
     }, 2000)
 
     return () => clearTimeout(timer)
@@ -78,7 +84,7 @@ export default function Home() {
 
   return (
     <>
-      {loading ? (
+      {(loading && y===null) ? (
         <>
           <Loader />
           <div className="hidden">
@@ -106,10 +112,10 @@ export default function Home() {
 
           <div className="md:mt-[20%] lg:mt-0">
             <div className="flex flex-col gap-5 items-center justify-center w-full min-h-screen absolute z-50 md:-mt-40 lg:md:-mt-0">
-              <div className="text-center animate-jump-in animate-delay-[2500ms]">
+              <div className="text-center animate-jump-in animate-delay-[1500ms]">
                 <div className="lg:text-4xl text-3xl text-name  text-white">Hello, I&apos;m</div>
                 <span className="lg:text-6xl text-4xl font-semibold text-name tracking-wider text-white">Rajyavardhan Bithale</span>
-                <div className="w-full h-0.5 bg-white rounded-full mt-3 animate-fade-right animate-delay-[3500ms]"></div>
+                <div className="w-full h-0.5 bg-white rounded-full mt-3 animate-fade-right animate-delay-[2500ms]"></div>
               </div>
 
             </div>

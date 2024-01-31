@@ -1,5 +1,6 @@
 
 export default function Loader() {
+    
     return (
         <>
             <div className="h-screen w-full flex flex-col justify-center align-middle items-center">

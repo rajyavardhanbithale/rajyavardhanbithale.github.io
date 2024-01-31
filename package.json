@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@ionic/react": "^7.6.2",
+    "@types/js-cookie": "^3.0.6",
     "ionicons": "^7.2.2",
+    "js-cookie": "^3.0.5",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
