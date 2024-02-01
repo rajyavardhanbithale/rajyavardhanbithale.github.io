@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2&family=Major+Mono+Display&family=Merienda');
 *{
     /* outline: solid red 1px; */
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 
@@ -150,3 +150,4 @@
 @keyframes cssAnimation {
   to   { visibility: visible; }
 }
+

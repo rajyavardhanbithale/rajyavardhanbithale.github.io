@@ -45,38 +45,79 @@ export default function Console() {
 
             // Check if the inputKey is "help" and set a specific value
             if (inputKey.toLowerCase() === 'help') {
-                newValue = 'how can I help you';
+                newValue = ['cd - change directory',
+                    'ls - list file/folder',
+                    'open [PROJECT] - open the project '];
             }
 
             if (inputKey.toLowerCase() === 'ls') {
-                newValue = ['help', 'qazxc', 'sdfsd'];
+                newValue = ['agrihelp', 'RAGE OS',];
             }
+
+            if (inputKey.toLowerCase() === 'll') {
+                newValue = ['project 0 rajyavardhan github  4096 Nov 7 23  Agrihelp',
+                            'project 1 rajyavardhan github  4096 Oct 1 22  RAGE OS'];
+            }
+            
 
             const newDict: Dictionary = { key: inputKey, value: newValue };
             setDictArray((prevDictArray) => [...prevDictArray, newDict]);
             setInputKey(''); // Clear the inputKey after appending
             setInputValue(''); // Clear the inputValue after appending
+
+            if (inputKey.toLowerCase() === 'clear') {
+                setDictArray('')
+            }
         }
     };
 
-    console.log(dictArray);
+    const returnColor = (command: string) => {
+        let color;
+        console.log(command);
+        
+        switch (command) {
+            case "ls":
+                color = "#72C4EE"
+                break;
 
+            case "ll":
+                color = "#9DE2EE"
+                break;
 
+            default:
+                color = "#CDCDF6"
+                break;
+        }
+
+        return color;
+    }
+
+    
+    
     return (
         <>
             <div className="absolute h-screen w-full bg-[#201A2E] -z-50"></div>
             <div className={`mt-24 ml-5 z-10 ${SSP.className}`}>
                 <div>
-                    {dictArray.map((dict, index) => (
+                    {dictArray && dictArray.map((dict, index) => (
                         <div key={index} className="my-2">
-                            <TerminalHost />
-                            <br />
+                            <div className="flex gap-4">
+                                <TerminalHost />
+                                <span className=" text-[#FDB0E6] font-bold text-xl">{dict.key} </span>
+
+                            </div>
 
                             {typeof dict.value === "object" ? (
-                                <div>
+                                <div className="my-2">
                                     {(dict.value as any[]).map((value, index) => (
                                         <div>
-                                            <span className="text-[#CDCDF6] font-semibold text-xl" key={index}>{value}</span>
+                                            <span
+                                                className={`font-semibold text-xl`}
+                                                key={index}
+                                                style={{ color: `${returnColor(dict.key)}` }}
+                                            >
+                                                {value}
+                                            </span>
                                         </div>
                                     ))}
                                 </div>
@@ -100,7 +141,7 @@ export default function Console() {
                         onChange={handleKeyChange}
                         onKeyDown={handleKeyDown}
                         ref={inputRef}
-                        className="bg-transparent outline-none text-[#CDCDF6] font-semibold text-xl "
+                        className="bg-transparent outline-none text-[#FDB0E6] font-semibold text-xl"
                     />
                 </div>
 
