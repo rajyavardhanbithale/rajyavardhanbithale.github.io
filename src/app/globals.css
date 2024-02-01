@@ -4,7 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Exo+2&family=Major+Mono+Display&family=Merienda');
 *{
-    /* outline: solid red 1px; */
+    outline: solid red 1px;
     overflow: hidden;
 }
 
@@ -28,7 +28,7 @@
   text-shadow: 21px 4px 17px rgba(0, 0, 0, 0.35);
 }
 
-.spinning-object1 {
+/* .spinning-object1 {
   animation: spin1 2.5s ease-in-out;
   animation-delay: 0s;
 }
@@ -41,7 +41,7 @@
 .spinning-object3 {
   animation: spin1 2.5s ease-in-out;
   animation-delay: 0s;
-}
+} */
 
 @keyframes spin1 {
   from {
