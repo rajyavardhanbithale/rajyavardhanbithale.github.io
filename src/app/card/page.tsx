@@ -3,9 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ImRadioChecked2, ImRadioUnchecked } from "react-icons/im";
-import { IoBarbellOutline, IoCard, IoCardOutline, IoCloseCircle, IoCloseCircleSharp, IoLocationOutline, IoLogoGithub, IoLogoInstagram, IoLogoLinkedin, IoMailOutline } from "react-icons/io5";
-import { IoLocation } from "react-icons/io5";
+import { IoBarbellOutline, IoCardOutline, IoCloseCircleSharp, IoLocationOutline, IoLogoGithub, IoLogoInstagram, IoLogoLinkedin, IoMailOutline } from "react-icons/io5";
 
+import { skillBackEnd, skillFrontEnd, skillCloud, skillLinux, skillML } from "./skills";
+import { createSession, randomKey, readSession } from "@/hooks/useManageSessions";
 
 export default function Card() {
     const [selectedTheme, setSelectedTheme] = useState('')
@@ -13,6 +14,14 @@ export default function Card() {
     const [open, setOpen] = useState(false);
     const [openAnimation, setOpenAnimation] = useState(false);
     const [skill, setSkill] = useState([])
+
+    const [hoverState, setHoverState] = useState(true)
+    const hoverKey = process.env.NEXT_PUBLIC_HOVER_KEY ? parseInt(process.env.NEXT_PUBLIC_HOVER_KEY, 10) : 8
+    const hoverSession = readSession("hover")
+
+    useEffect(() => {
+        setHoverState(hoverKey && hoverSession?.length === hoverKey ? true : false)
+    }, [hoverState, setHoverState])
 
     const [screenSize, setScreenSize] = useState({
         width: (typeof window !== 'undefined' ? window.innerWidth : 0),
@@ -73,98 +82,11 @@ export default function Card() {
         }, 200);
     }
 
-
-
-    const skillFrontEnd = [
-        {
-            "name": "next",
-            "title": "Next.JS"
-        }, {
-            "name": "react",
-            "title": "React.JS"
-        }, {
-            "name": "javascript",
-            "title": "Javascript"
-        }, {
-            "name": "tailwind",
-            "title": "Tailwind"
-        }, {
-            "name": "figma",
-            "title": "Figma*"
-        }, {
-            "name": "inkscape",
-            "title": "Inkscape"
-        }, {
-            "name": "i18n",
-            "title": "i18n"
-        },
-    ]
-    const skillBackEnd = [
-        {
-            "name": "python",
-            "title": "Python"
-        }, {
-            "name": "fastapi",
-            "title": "Fast API"
-        }, {
-            "name": "flask",
-            "title": "Flask"
-        }, {
-            "name": "django",
-            "title": "Django*"
-        }, {
-            "name": "mongodb",
-            "title": "MongoDB"
-        }, {
-            "name": "redis",
-            "title": "REDIS"
-        }, {
-            "name": "firebase",
-            "title": "Firebase"
-        }, {
-            "name": "postman",
-            "title": "Postman"
-        },
-    ]
-    const skillCloud = [
-        {
-            "name": "linux",
-            "title": "Linux"
-        }, {
-            "name": "gcp",
-            "title": "GCP"
-        }, {
-            "name": "render",
-            "title": "Render.sh"
-        }, {
-            "name": "vercel",
-            "title": "Vercel"
-        },
-    ]
-    const skillLinux = [
-        {
-            "name": "ubuntu",
-            "title": "Ubuntu"
-        }, {
-            "name": "debian",
-            "title": "Debian"
-        }, {
-            "name": "kali",
-            "title": "Kali"
-        }, {
-            "name": "arch",
-            "title": "Arch*"
-        },
-    ]
-    const skillML = [
-        {
-            "name": "sklearn",
-            "title": "Sklearn"
-        }, {
-            "name": "nltk",
-            "title": "NLTK"
-        },
-    ]
+   
+    const handleHover = () => {
+        createSession("hover", randomKey(hoverKey))
+        setHoverState(false)
+    }
 
 
     return (
@@ -208,8 +130,8 @@ export default function Card() {
                                 <IoBarbellOutline className="inline-flex mr-1" />
                                 What do I know ?
                                 <ul>
-                                    <li onMouseOver={() => handleOpen(skillBackEnd)} className="text-xl px-5 py-0.5 text-gray-50">+ Backend Development</li>
-                                    <li onMouseOver={() => handleOpen(skillFrontEnd)} className="text-lg px-5 py-0.5 text-gray-100">+ Full Stack Web Development</li>
+                                    <li onMouseOver={() => handleOpen(skillBackEnd)} className="text-xl px-5 py-0.5 text-gray-50">+ Back-end</li>
+                                    <li onMouseOver={() => handleOpen(skillFrontEnd)} className="text-lg px-5 py-0.5 text-gray-100">+ Front-end</li>
                                     <li onMouseOver={() => handleOpen(skillCloud)} className="text-lg px-5 py-0.5 text-gray-100 w-1/2">+ Cloud</li>
                                     <li onMouseOver={() => handleOpen(skillLinux)} className="text-xl px-5 py-0.5 text-gray-50 w-1/2">+ Linux</li>
                                     <li onMouseOver={() => handleOpen(skillML)} className="text-lg px-5 py-0.5 text-gray-100 w-1/2">+ ML/DL*</li>
@@ -239,8 +161,14 @@ export default function Card() {
                                 </span>
                             </div>
                         </div>
-                        <img src="images/card_hover_help.png" className="absolute w-[14%] right-28 top-40 opacity-50 lg:right-36 lg:top-48" />
-                        <span className="absolute text-xl text-white underline right-12 lg:right-20 top-[13.3rem] lg:top-[16.8rem] opacity-80 animate-pulse">Hover</span>
+
+                        {hoverState &&
+                            <div >
+                                <img onClick={handleHover} src="images/card_hover_help.png" className="absolute w-[14%] right-28 top-40 opacity-50 lg:right-36 lg:top-48" />
+                                <span onClick={handleHover} className="absolute text-xl text-white underline right-12 lg:right-20 top-[13.3rem] lg:top-[16.8rem] opacity-80 animate-pulse">Hover</span>
+                            </div>
+                        }
+
                     </div>
                 </div>
 
@@ -287,40 +215,3 @@ export default function Card() {
     )
 }
 
-
-function PopUP() {
-    const skillFrontEnd = [
-        {
-            "name": "next",
-            "title": "Next.JS"
-        }, {
-            "name": "react",
-            "title": "React.JS"
-        }, {
-            "name": "javascript",
-            "title": "Javascript"
-        }, {
-            "name": "tailwind",
-            "title": "Tailwind CSS"
-        },
-    ]
-    const handleClose = () => {
-
-    }
-    return (
-        <>
-            <div className="absolute z-50 w-3/4 card-glass justify-center items-center text-center rounded-2xl shadow-2xl">
-                <span onClick={handleClose} className="absolute right-0 px-2 py-1 text-2xl text-gray-800"><IoCloseCircleSharp /></span>
-                <div className="flex gap-5">
-                    {skillFrontEnd.map((data, idx) => (
-                        <div key={idx} className="flex flex-col h-36 w-full items-center mx-auto relative p-4 ">
-                            <img src={`images/skill/${data.name}.png`} className="w-20 h-24  object-contain my-auto" alt="" />
-                            <span className="text-lg bottom-0 text-white font-semibold">{data.title}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-        </>
-    )
-}

@@ -14,17 +14,22 @@ export default function Home() {
   const [availableThemesList, setAvailableThemesList] = useState([''])
   const [seed, setSeed] = useState(1);
   const [loading, setLoading] = useState(true)
+  const [navigatorState,setNavigatorState] = useState(true)
 
   const sessionLoadingKey: number = process.env.NEXT_PUBLIC_LOADING_KEY ? parseInt(process.env.NEXT_PUBLIC_LOADING_KEY, 10) : 8
   const navigatorKey: number = process.env.NEXT_PUBLIC_NAVIGATOR_KEY ? parseInt(process.env.NEXT_PUBLIC_NAVIGATOR_KEY, 10) : 8
 
   const sessionLoading = readSession("loading")
   const navigator = readSession("navigator")
+  
+  useEffect(()=>{
+    setNavigatorState(navigator && navigator?.length === navigatorKey ? false : true)
+  },[navigator,setNavigatorState])
 
-  const validSession = sessionLoading.length === sessionLoadingKey ? sessionLoading : null
-  const validNavigator = navigator && navigator.length === navigatorKey ? navigator : null
+  const validSession = sessionLoading?.length === sessionLoadingKey ? sessionLoading : null
 
-
+  console.log(navigatorState);
+  
 
   const [screenSize, setScreenSize] = useState({
     width: (typeof window !== 'undefined' ? window.innerWidth : 0),
@@ -83,6 +88,7 @@ export default function Home() {
 
   const handleHideNavigator = () => {
     createSession("navigator", randomKey(navigatorKey))
+    setNavigatorState(false)
   }
 
 
@@ -91,7 +97,7 @@ export default function Home() {
       {(loading && validSession === null) ? (
         <>
           <Loader />
-          <div className="hidden">
+          <div  className="hidden">
             {availableThemesList?.map((item, key) => {
               return (
                 <div key={key}>
@@ -115,7 +121,7 @@ export default function Home() {
           </div>
 
           <div className="md:mt-[20%] lg:mt-0">
-            <div className="flex flex-col gap-5 items-center justify-center mx-auto min-h-screen absolute z-50 md:-mt-40 lg:md:-mt-0">
+            <div className="flex flex-col gap-5 items-center justify-center w-full min-h-screen absolute z-50 md:-mt-40 lg:md:-mt-0">
               <div className="text-center animate-jump-in animate-delay-[1500ms]">
                 <div className="lg:text-4xl text-3xl text-name  text-white">Hello, I&apos;m</div>
                 <span className="lg:text-6xl text-4xl font-semibold text-name tracking-wider text-white">Rajyavardhan Bithale</span>
@@ -124,7 +130,7 @@ export default function Home() {
 
             </div>
 
-            <div className="flex flex-col gap-5 items-start p-4 justify-center min-h-screen absolute z-50 -mt-36 lg:-mt-0">
+            <div className="flex flex-col gap-5 items-start p-4 justify-center w-full min-h-screen absolute z-50 -mt-36 lg:-mt-0">
               <ImRadioChecked2 className="text-white lg:text-2xl text-lg font-bold" />
               <Link href={"/card"}>
                 <ImRadioUnchecked className="text-white lg:text-2xl text-lg font-bold" />
@@ -132,11 +138,12 @@ export default function Home() {
               <ImRadioUnchecked className="text-white lg:text-2xl text-lg font-bold" />
               <ImRadioUnchecked className="text-white lg:text-2xl text-lg font-bold" />
 
-              <div onClick={handleHideNavigator} className={`${validNavigator === null ? 'block' : 'hidden'}`}>
-                <img src="images/help_arrow.png" className="absolute w-[5%] left-[4.5%] top-[43%] lg:w-[5%] lg:left-[2.5%] lg:top-[39%] animate-pulse" />
-                <span className="text-base tracking-tighter lg:tracking-tighter lg:text-2xl text-white absolute left-[10%] top-[41%] underline lg:left-[8%] lg:top-[36%] drop-shadow-2xl">Click Here To Navigate</span>
-              </div>
-
+              {navigatorState &&
+                <div onClick={handleHideNavigator} className={` z-[100]`}>
+                  <img src="images/help_arrow.png" className="absolute w-[5%] left-[4.5%] top-[43%] lg:w-[5%] lg:left-[2.5%] lg:top-[39%] animate-pulse" />
+                  <span className="text-base tracking-tighter lg:tracking-tighter lg:text-2xl text-white absolute left-[10%] top-[41%] underline lg:left-[8%] lg:top-[36%] drop-shadow-2xl">Click Here To Navigate</span>
+                </div>
+              }
             </div>
 
             <div className="flex flex-row gap-5 items-end p-8 justify-center w-full bottom-0 absolute z-50 -mt-[23rem] lg:-mt-0">
